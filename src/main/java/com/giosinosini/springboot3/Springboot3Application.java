@@ -12,11 +12,12 @@ import com.giosinosini.springboot3.domain.Address;
 import com.giosinosini.springboot3.domain.Category;
 import com.giosinosini.springboot3.domain.City;
 import com.giosinosini.springboot3.domain.Client;
-import com.giosinosini.springboot3.domain.Request;
 import com.giosinosini.springboot3.domain.Payment;
 import com.giosinosini.springboot3.domain.Payment_BankSlip;
 import com.giosinosini.springboot3.domain.Payment_Card;
 import com.giosinosini.springboot3.domain.Product;
+import com.giosinosini.springboot3.domain.Request;
+import com.giosinosini.springboot3.domain.RequestItem;
 import com.giosinosini.springboot3.domain.State;
 import com.giosinosini.springboot3.domain.enums.ClientType;
 import com.giosinosini.springboot3.domain.enums.PaymentStatus;
@@ -24,9 +25,10 @@ import com.giosinosini.springboot3.repositories.AddressRepository;
 import com.giosinosini.springboot3.repositories.CategoryRepository;
 import com.giosinosini.springboot3.repositories.CityRepository;
 import com.giosinosini.springboot3.repositories.ClientRepository;
-import com.giosinosini.springboot3.repositories.RequestRepository;
 import com.giosinosini.springboot3.repositories.PaymentRepository;
 import com.giosinosini.springboot3.repositories.ProductRepository;
+import com.giosinosini.springboot3.repositories.RequestItemRepository;
+import com.giosinosini.springboot3.repositories.RequestRepository;
 import com.giosinosini.springboot3.repositories.StateRepository;
 
 @SpringBootApplication
@@ -49,7 +51,8 @@ public class Springboot3Application implements CommandLineRunner {
 	private RequestRepository orderRepository;
 	@Autowired
 	private PaymentRepository paymentRepository;
-	
+	@Autowired
+	private RequestItemRepository requestItemRepository;
 	
 	
 	public static void main(String[] args) {
@@ -116,5 +119,17 @@ public class Springboot3Application implements CommandLineRunner {
 		orderRepository.saveAll(Arrays.asList(ord1, ord2));
 		paymentRepository.saveAll(Arrays.asList(pay1, pay2));
 		
+		RequestItem rI1 = new RequestItem(ord1, p1, 0.00, 1, 2000.00);
+		RequestItem rI2 = new RequestItem(ord1, p3, 0.00, 2, 20.00);
+		RequestItem rI3 = new RequestItem(ord2, p2, 100.00, 1, 250.00);
+		
+		ord1.getItems().addAll(Arrays.asList(rI1, rI2));   // association between request and RequestItens
+		ord2.getItems().addAll(Arrays.asList(rI3));
+		
+		p1.getItems().addAll(Arrays.asList(rI1));   // association between product and RequestItem
+		p2.getItems().addAll(Arrays.asList(rI3));
+		p3.getItems().addAll(Arrays.asList(rI2));
+		
+		requestItemRepository.saveAll(Arrays.asList(rI1,rI2,rI3));
 	}
 }
