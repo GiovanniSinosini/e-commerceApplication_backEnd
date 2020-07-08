@@ -3,19 +3,18 @@ package com.giosinosini.springboot3.domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.giosinosini.springboot3.domain.enums.PaymentStatus;
 
 @Entity
 public class Payment_BankSlip extends Payment {
 	private static final long serialVersionUID = 1L;
 	
-	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dueDate;
 	
-	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date PaymentDate;
 	
 	public Payment_BankSlip() {
