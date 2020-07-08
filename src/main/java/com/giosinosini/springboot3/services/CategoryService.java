@@ -21,4 +21,9 @@ public class CategoryService {
 				"Object not found" + id + ", Type: " + Category.class.getName()));
 	}
 	
+	public Category insert(Category obj) {
+		obj.setId(null);  // if the id exists, it will just be an update
+		return repo.save(obj);
+	}
+	
 }
