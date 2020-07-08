@@ -24,8 +24,8 @@ public abstract class Payment implements Serializable {
 	private Integer status;
 	
 	@JsonIgnore
-	@JoinColumn(name = "request_id")
 	@OneToOne
+	@JoinColumn(name = "request_id")
 	@MapsId
 	private Request request;
 	

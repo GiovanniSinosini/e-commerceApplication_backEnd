@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 public class ResquestItemPK implements Serializable {  // auxiliary class
 	private static final long serialVersionUID = 1L;
 	
+	
 	@ManyToOne
 	@JoinColumn(name="request_id")
 	private Request request;
@@ -21,6 +22,7 @@ public class ResquestItemPK implements Serializable {  // auxiliary class
 	public Request getRequest() {
 		return request;
 	}
+	
 	public void setRequest(Request request) {
 		this.request = request;
 	}
