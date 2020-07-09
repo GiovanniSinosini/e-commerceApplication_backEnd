@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.giosinosini.springboot3.domain.Category;
+import com.giosinosini.springboot3.dto.CategoryDTO;
 import com.giosinosini.springboot3.exceptions.DataIntegrityException;
 import com.giosinosini.springboot3.exceptions.ObjectNotFoundException;
 import com.giosinosini.springboot3.repositories.CategoryRepository;
@@ -53,6 +54,10 @@ public class CategoryService {
 	public Page<Category> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
+	}
+	
+	public Category fromDTO(CategoryDTO objDto) {   // instantiate from the DTO
+		return new Category(objDto.getId(), objDto.getName());
 	}
 	
 }
