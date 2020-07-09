@@ -1,5 +1,6 @@
 package com.giosinosini.springboot3.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,4 +42,9 @@ public class CategoryService {
 			throw new DataIntegrityException("You cannot delete a category that has products");
 		}
 	}
+	
+	public List<Category> findAll(){
+		return repo.findAll();
+	}
+	
 }
