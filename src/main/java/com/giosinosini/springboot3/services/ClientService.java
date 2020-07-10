@@ -28,10 +28,15 @@ public class ClientService {
 				"Object not found" + id + ", Type: " + Client.class.getName()));
 	}
 	
-	public Client update(Client obj) {
-		Client newObj = find(obj.getId());
-		updateData(newObj, obj);
+	public Client update(Client objPut) {
+		Client newObj = find(objPut.getId());
+		updateData(newObj, objPut);
 		return repo.save(newObj);
+	}
+	
+	private void updateData(Client newObj, Client objPut) {
+		newObj.setName(objPut.getName());
+		newObj.setEmail(objPut.getEmail());
 	}
 	
 	public void delete(Integer id) {
@@ -55,10 +60,5 @@ public class ClientService {
 	public Client fromDTO(ClientDTO objDto) {   // instantiate from the DTO
 		return new Client(objDto.getId(), objDto.getName(), objDto.getEmail(), null, null);
 	}
-	
-	private void updateData(Client newObj, Client obj) {
-		newObj.setName(obj.getName());
-		newObj.setEmail(obj.getEmail());
-	}
-	
+		
 }

@@ -32,11 +32,17 @@ public class CategoryService {
 		obj.setId(null);  // if the id exists, it will just be an update
 		return repo.save(obj);
 	}
-	
-	public Category update(Category obj) {
-		find(obj.getId());
-		return repo.save(obj);
+		
+	public Category update(Category objPut) {
+		Category newObj = find(objPut.getId());
+		updateData(newObj, objPut);
+		return repo.save(newObj);
 	}
+	
+	private void updateData(Category newObj, Category objPut) {
+		newObj.setName(objPut.getName());
+	}
+	
 	
 	public void delete(Integer id) {
 		find(id);
