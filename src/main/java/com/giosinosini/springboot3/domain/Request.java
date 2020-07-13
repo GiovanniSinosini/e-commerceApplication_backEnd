@@ -52,6 +52,14 @@ public class Request implements Serializable {
 		this.client = client;
 		this.addressDelivery = addressDelivery;
 	}
+	
+	public double getTotalPrice() {
+		double sum = 0;
+		for (RequestItem ri : items) {
+			sum += ri.getSubTotal();
+		}
+		return sum;
+	}
 
 	public Integer getId() {
 		return id;

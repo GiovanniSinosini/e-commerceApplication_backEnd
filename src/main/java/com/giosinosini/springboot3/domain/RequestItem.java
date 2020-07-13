@@ -31,6 +31,10 @@ public class RequestItem implements Serializable {   // association class
 		this.price = price;
 	}
 	
+	public double getSubTotal() {
+		return (price - discount) * quantity;
+	}
+	
 	@JsonIgnore
 	public Request getRequest() {
 		return id.getRequest();
