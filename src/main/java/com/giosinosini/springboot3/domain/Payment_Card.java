@@ -2,9 +2,11 @@ package com.giosinosini.springboot3.domain;
 
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.giosinosini.springboot3.domain.enums.PaymentStatus;
 
 @Entity
+@JsonTypeName("payment_Card")
 public class Payment_Card extends Payment{
 	private static final long serialVersionUID = 1L;
 

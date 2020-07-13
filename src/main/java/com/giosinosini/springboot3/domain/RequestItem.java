@@ -40,8 +40,16 @@ public class RequestItem implements Serializable {   // association class
 		return id.getRequest();
 	}
 	
+	public void setRequest(Request request) {
+		id.setRequest(request);
+	}
+	
 	public Product getProduct() {
 		return id.getProduct();
+	}
+	
+	public void setProduct(Product product) {
+		id.setProduct(product);
 	}
 
 	public ResquestItemPK getId() {

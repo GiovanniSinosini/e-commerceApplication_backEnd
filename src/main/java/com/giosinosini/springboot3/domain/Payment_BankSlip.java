@@ -5,9 +5,11 @@ import java.util.Date;
 import javax.persistence.Entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.giosinosini.springboot3.domain.enums.PaymentStatus;
 
 @Entity
+@JsonTypeName("payment_BankSlip")
 public class Payment_BankSlip extends Payment {
 	private static final long serialVersionUID = 1L;
 	
