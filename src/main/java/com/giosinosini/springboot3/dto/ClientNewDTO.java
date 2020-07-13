@@ -2,21 +2,44 @@ package com.giosinosini.springboot3.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.giosinosini.springboot3.services.validation.ClientInsert;
+
+@ClientInsert
 public class ClientNewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@NotEmpty(message="Mandatory")
+	@Length(min=5, max=120, message="Number of characters must be between 5 and 120")
 	private String name;
+
+	@NotEmpty(message="Mandatory")
+	@Email(message="Invalid email")
 	private String email;
+	
+	@NotEmpty(message="Mandatory")
 	private String nif;
+	
 	private Integer type;
 	
+	@NotEmpty(message="Mandatory")
 	private String street;
+	@NotEmpty(message="Mandatory")
 	private String number;
+
 	private String complement;
 	private String district;
+	
+	@NotEmpty(message="Mandatory")
 	private String cod;
 	
+	@NotEmpty(message="Mandatory")
 	private String phone1;
+
 	private String phone2;
 	private String phone3;
 	
