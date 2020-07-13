@@ -70,19 +70,42 @@ public class Springboot3Application implements CommandLineRunner {
 		Category cat6 = new Category(null, "Clothes");
 		Category cat7 = new Category(null, "Pet");
 				
+				
 		Product p1 = new Product(null, "Computer", 2000.00);
 		Product p2 = new Product(null, "Printer", 250.00);
 		Product p3 = new Product(null, "Mouse", 20.00);
+		Product p4 = new Product(null, "Table", 75.00);
+		Product p5 = new Product(null, "T-shirt", 20.00);
+		Product p6 = new Product(null, "Colinary Book", 15.00);
+		Product p7 = new Product(null, "Keyboard", 55.00);
+		Product p8 = new Product(null, "Rice", 1.00);
+		Product p9 = new Product(null, "Dog food", 12.00);
+		Product p10 = new Product(null, "Chair", 45.00);
+		Product p11 = new Product(null, "Wheels", 20.00);
 		
-		cat1.getProducts().addAll(Arrays.asList(p1, p2, p3));
-		cat2.getProducts().addAll(Arrays.asList(p2));
+		
+		cat1.getProducts().addAll(Arrays.asList(p1, p2, p3, p7));
+		cat2.getProducts().addAll(Arrays.asList(p2, p4));
+		cat3.getProducts().addAll(Arrays.asList(p11));
+		cat4.getProducts().addAll(Arrays.asList(p6));
+		cat5.getProducts().addAll(Arrays.asList(p8));
+		cat6.getProducts().addAll(Arrays.asList(p5));
+		cat7.getProducts().addAll(Arrays.asList(p9));
 		
 		p1.getCategories().addAll(Arrays.asList(cat1));
 		p2.getCategories().addAll(Arrays.asList(cat1, cat2));
 		p3.getCategories().addAll(Arrays.asList(cat1));
+		p4.getCategories().addAll(Arrays.asList(cat2));
+		p5.getCategories().addAll(Arrays.asList(cat6));
+		p6.getCategories().addAll(Arrays.asList(cat4));
+		p7.getCategories().addAll(Arrays.asList(cat1));
+		p8.getCategories().addAll(Arrays.asList(cat5));
+		p9.getCategories().addAll(Arrays.asList(cat7));
+		p10.getCategories().addAll(Arrays.asList(cat2));
+		p11.getCategories().addAll(Arrays.asList(cat3));
 				
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
-		productRepository.saveAll(Arrays.asList(p1, p2, p3));
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11));
 		
 		State state1 = new State(null, "Porto");
 		State state2 = new State(null, "Lisboa");
