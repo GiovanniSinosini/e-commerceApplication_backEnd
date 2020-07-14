@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.giosinosini.springboot3.domain.Category;
 import com.giosinosini.springboot3.domain.Request;
-import com.giosinosini.springboot3.dto.CategoryDTO;
 import com.giosinosini.springboot3.services.RequestService;
 
 @RestController
