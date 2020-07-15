@@ -34,6 +34,9 @@ public class RequestService {
 	@Autowired
 	private RequestItemRepository requestItemRepository;
 	
+	@Autowired
+	private ClientService clientService;
+	
 	
 	public Request find(Integer id) {
 		Optional<Request> obj = repo.findById(id); 
@@ -45,6 +48,7 @@ public class RequestService {
 	public Request insert(Request obj) {
 		obj.setId(null);
 		obj.setInstant(new Date());
+		obj.setClient(clientService.find(obj.getClient().getId()));
 		obj.getPayment().setStatus(PaymentStatus.PENDING);
 		obj.getPayment().setRequest(obj);
 		if (obj.getPayment() instanceof Payment_BankSlip) {
@@ -55,10 +59,12 @@ public class RequestService {
 		paymentRepository.save(obj.getPayment());
 		for(RequestItem ri : obj.getItems()) {
 			ri.setDiscount(0.0);
-			ri.setPrice(productService.find(ri.getProduct().getId()).getPrice());
+			ri.setProduct(productService.find(ri.getProduct().getId()));
+			ri.setPrice(ri.getProduct().getPrice());
 			ri.setRequest(obj);
 		}
 		requestItemRepository.saveAll(obj.getItems());
+		System.out.println(obj);
 		return obj;
 	}
 	
