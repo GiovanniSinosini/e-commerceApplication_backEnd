@@ -66,7 +66,7 @@ public class RequestService {
 			ri.setRequest(obj);
 		}
 		requestItemRepository.saveAll(obj.getItems());
-		emailService.sendOrderConfirmationEmail(obj);
+		emailService.sendOrderConfirmationHtmlEmail(obj);
 		return obj;
 	}
 	
