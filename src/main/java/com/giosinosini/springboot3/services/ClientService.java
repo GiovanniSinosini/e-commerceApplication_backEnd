@@ -16,12 +16,15 @@ import com.giosinosini.springboot3.domain.Address;
 import com.giosinosini.springboot3.domain.City;
 import com.giosinosini.springboot3.domain.Client;
 import com.giosinosini.springboot3.domain.enums.ClientType;
+import com.giosinosini.springboot3.domain.enums.UserProfile;
 import com.giosinosini.springboot3.dto.ClientDTO;
 import com.giosinosini.springboot3.dto.ClientNewDTO;
+import com.giosinosini.springboot3.exceptions.AuthorizationException;
 import com.giosinosini.springboot3.exceptions.DataIntegrityException;
 import com.giosinosini.springboot3.exceptions.ObjectNotFoundException;
 import com.giosinosini.springboot3.repositories.AddressRepository;
 import com.giosinosini.springboot3.repositories.ClientRepository;
+import com.giosinosini.springboot3.security.UserSpringSecurity;
 
 @Service
 public class ClientService {
@@ -36,6 +39,12 @@ public class ClientService {
 	private BCryptPasswordEncoder pe;
 	
 	public Client find(Integer id) {
+		
+		UserSpringSecurity currentlyUser = UserService.authenticated();
+		if (currentlyUser == null || !currentlyUser.hasRole(UserProfile.ADMIN) && !id.equals(currentlyUser.getId())) {
+			throw new AuthorizationException("Access denied");
+		}
+		
 		Optional<Client> obj = repo.findById(id); 
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Object not found" + id + ", Type: " + Client.class.getName()));
