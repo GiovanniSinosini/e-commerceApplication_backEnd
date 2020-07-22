@@ -1,5 +1,6 @@
 package com.giosinosini.springboot3.services;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.giosinosini.springboot3.domain.Address;
 import com.giosinosini.springboot3.domain.City;
@@ -37,6 +39,9 @@ public class ClientService {
 	
 	@Autowired
 	private BCryptPasswordEncoder pe;
+	
+	@Autowired
+	private S3Service s3Service;
 	
 	public Client find(Integer id) {
 		
@@ -107,4 +112,10 @@ public class ClientService {
 		}
 		return cli;
 	}
+	
+	public URI uploadProfilePicture(MultipartFile multipartFile) {
+		return s3Service.uploadFile(multipartFile);
+		
+	}
 }
+
