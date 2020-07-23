@@ -21,12 +21,12 @@ import com.giosinosini.springboot3.domain.enums.ClientType;
 import com.giosinosini.springboot3.domain.enums.UserProfile;
 import com.giosinosini.springboot3.dto.ClientDTO;
 import com.giosinosini.springboot3.dto.ClientNewDTO;
-import com.giosinosini.springboot3.exceptions.AuthorizationException;
-import com.giosinosini.springboot3.exceptions.DataIntegrityException;
-import com.giosinosini.springboot3.exceptions.ObjectNotFoundException;
 import com.giosinosini.springboot3.repositories.AddressRepository;
 import com.giosinosini.springboot3.repositories.ClientRepository;
 import com.giosinosini.springboot3.security.UserSpringSecurity;
+import com.giosinosini.springboot3.services.exceptions.AuthorizationException;
+import com.giosinosini.springboot3.services.exceptions.DataIntegrityException;
+import com.giosinosini.springboot3.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ClientService {

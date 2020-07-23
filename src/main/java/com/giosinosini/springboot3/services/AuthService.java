@@ -7,8 +7,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.giosinosini.springboot3.domain.Client;
-import com.giosinosini.springboot3.exceptions.ObjectNotFoundException;
 import com.giosinosini.springboot3.repositories.ClientRepository;
+import com.giosinosini.springboot3.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class AuthService {

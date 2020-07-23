@@ -15,12 +15,12 @@ import com.giosinosini.springboot3.domain.Payment_BankSlip;
 import com.giosinosini.springboot3.domain.Request;
 import com.giosinosini.springboot3.domain.RequestItem;
 import com.giosinosini.springboot3.domain.enums.PaymentStatus;
-import com.giosinosini.springboot3.exceptions.AuthorizationException;
-import com.giosinosini.springboot3.exceptions.ObjectNotFoundException;
 import com.giosinosini.springboot3.repositories.PaymentRepository;
 import com.giosinosini.springboot3.repositories.RequestItemRepository;
 import com.giosinosini.springboot3.repositories.RequestRepository;
 import com.giosinosini.springboot3.security.UserSpringSecurity;
+import com.giosinosini.springboot3.services.exceptions.AuthorizationException;
+import com.giosinosini.springboot3.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class RequestService {

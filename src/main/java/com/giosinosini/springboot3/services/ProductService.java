@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.giosinosini.springboot3.domain.Category;
 import com.giosinosini.springboot3.domain.Product;
-import com.giosinosini.springboot3.exceptions.ObjectNotFoundException;
 import com.giosinosini.springboot3.repositories.CategoryRepository;
 import com.giosinosini.springboot3.repositories.ProductRepository;
+import com.giosinosini.springboot3.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ProductService {

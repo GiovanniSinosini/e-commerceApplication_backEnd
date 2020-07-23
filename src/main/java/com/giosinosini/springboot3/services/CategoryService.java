@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.giosinosini.springboot3.domain.Category;
 import com.giosinosini.springboot3.dto.CategoryDTO;
-import com.giosinosini.springboot3.exceptions.DataIntegrityException;
-import com.giosinosini.springboot3.exceptions.ObjectNotFoundException;
 import com.giosinosini.springboot3.repositories.CategoryRepository;
+import com.giosinosini.springboot3.services.exceptions.DataIntegrityException;
+import com.giosinosini.springboot3.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoryService {
