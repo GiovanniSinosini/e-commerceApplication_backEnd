@@ -31,6 +31,7 @@ public class AuthResource {
 		UserSpringSecurity user = UserService.authenticated();
 		String token = jwtUtil.generateToken(user.getUsername());
 		response.addHeader("Authorization", "Bearer " + token);
+		response.addHeader("access-control-expose-headers", "Authorization");  //release the reading of the custom header
 		return ResponseEntity.noContent().build();
 	}
 	
