@@ -205,10 +205,10 @@ public class DBService {
 		
 		Client cli1 = new Client(null, "Manuel Oliveira", "carvalho.sino@gmail.com", "537.567.520-03", ClientType.PERSON, pe.encode("123"));
 		cli1.getPhones().addAll(Arrays.asList("789456123", "654789321"));
+		cli1.addUserProfile(UserProfile.ADMIN);
 		
 		Client cli2 = new Client(null, "José Silva", "sinosini@hotmail.com", "811.075.620-40", ClientType.PERSON, pe.encode("123"));
 		cli2.getPhones().addAll(Arrays.asList("5469872", "8563214"));
-		cli2.addUserProfile(UserProfile.ADMIN);
 		
 		Address a1 = new Address(null, "Fifity", "250", "Apart 56 ", "Gold", "321654", cli1, c1);
 		Address a2 = new Address(null, "Sixty", "150", "Apart 6 ", "Silver", "123456", cli1, c2);
