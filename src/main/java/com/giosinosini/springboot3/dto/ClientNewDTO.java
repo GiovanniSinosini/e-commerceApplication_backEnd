@@ -31,6 +31,7 @@ public class ClientNewDTO implements Serializable {
 	
 	@NotEmpty(message="Mandatory")
 	private String street;
+	
 	@NotEmpty(message="Mandatory")
 	private String number;
 
